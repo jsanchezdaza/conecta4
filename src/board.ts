@@ -25,26 +25,35 @@ export const DIRECTIONS = [
   [1, -1],
 ] as const
 
+const inBounds = (row: number, col: number, rows: number, cols: number) =>
+  row >= 0 && row < rows && col >= 0 && col < cols
+
+const has4From = (
+  board: Board,
+  row: number,
+  col: number,
+  deltaRow: number,
+  deltaCol: number,
+) => {
+  const player = board[row][col]
+  if (player === 0) return false
+  for (let step = 1; step < 4; step++) {
+    const nextRow = row + deltaRow * step
+    const nextCol = col + deltaCol * step
+    if (!inBounds(nextRow, nextCol, board.length, board[0].length)) return false
+    if (board[nextRow][nextCol] !== player) return false
+  }
+  return true
+}
+
 export const checkWinner = (board: Board): 0 | 1 | 2 => {
   const rows = board.length
   const cols = board[0].length
-  const dirs = DIRECTIONS
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      const player = board[r][c]
-      if (player === 0) continue
-      for (const [dr, dc] of dirs) {
-        let k = 1
-        while (
-          k < 4 &&
-          r + dr * k >= 0 &&
-          r + dr * k < rows &&
-          c + dc * k >= 0 &&
-          c + dc * k < cols &&
-          board[r + dr * k][c + dc * k] === player
-        )
-          k++
-        if (k === 4) return player
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (board[row][col] === 0) continue
+      for (const [deltaRow, deltaCol] of DIRECTIONS) {
+        if (has4From(board, row, col, deltaRow, deltaCol)) return board[row][col]
       }
     }
   }
