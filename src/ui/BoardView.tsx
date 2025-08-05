@@ -7,6 +7,7 @@ export const BoardView = () => {
   const winner = checkWinner(board)
 
   const onClick = (col: number) => {
+    if (winner) return
     setBoard((b) => dropPiece(b, col, player))
     setPlayer((p) => (p === 1 ? 2 : 1))
   }
