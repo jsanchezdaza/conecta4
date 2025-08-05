@@ -1,20 +1,29 @@
 import React from 'react'
-import { createBoard, dropPiece, checkWinner, COLS } from '@/board'
+import { createBoard, dropPiece, checkWinner, COLS, isBoardFull } from '@/board'
 
 export const BoardView = () => {
   const [board, setBoard] = React.useState(() => createBoard())
   const [player, setPlayer] = React.useState<1 | 2>(1)
   const winner = checkWinner(board)
+  const draw = winner === 0 && isBoardFull(board)
 
   const onClick = (col: number) => {
-    if (winner) return
+    if (winner || draw) return
     setBoard((b) => dropPiece(b, col, player))
     setPlayer((p) => (p === 1 ? 2 : 1))
   }
 
+  const reset = () => {
+    setBoard(createBoard())
+    setPlayer(1)
+  }
+
   return (
     <div>
-      {winner !== 0 && <div>Ganador: p{winner}</div>}
+      <div className="mb-2 flex items-center gap-2">
+        {winner !== 0 ? <div>Ganador: p{winner}</div> : draw ? <div>Empate</div> : null}
+        <button onClick={reset}>Reiniciar</button>
+      </div>
       <div role="grid" className={`grid grid-cols-${COLS} gap-1`}>
         {board.map((row, r) =>
           row.map((cell, c) => (

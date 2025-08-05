@@ -59,3 +59,5 @@ export const checkWinner = (board: Board): 0 | 1 | 2 => {
   }
   return 0
 }
+
+export const isBoardFull = (board: Board) => board.every((row) => row.every((c) => c !== 0))
