@@ -1,7 +1,9 @@
+export const ROWS = 6
+export const COLS = 7
 export type Cell = 0 | 1 | 2
 export type Board = Cell[][]
 
-export const createBoard = (rows = 6, cols = 7): Board =>
+export const createBoard = (rows = ROWS, cols = COLS): Board =>
   Array.from({ length: rows }, () => Array.from({ length: cols }, () => 0 as Cell))
 
 export const dropPiece = (board: Board, col: number, player: 1 | 2): Board => {
@@ -16,15 +18,17 @@ export const dropPiece = (board: Board, col: number, player: 1 | 2): Board => {
   return board
 }
 
+export const DIRECTIONS = [
+  [1, 0],
+  [0, 1],
+  [1, 1],
+  [1, -1],
+] as const
+
 export const checkWinner = (board: Board): 0 | 1 | 2 => {
   const rows = board.length
   const cols = board[0].length
-  const dirs = [
-    [1, 0],
-    [0, 1],
-    [1, 1],
-    [1, -1],
-  ] as const
+  const dirs = DIRECTIONS
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       const player = board[r][c]

@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBoard, dropPiece, checkWinner } from '@/board'
+import { createBoard, dropPiece, checkWinner, COLS } from '@/board'
 
 export const BoardView = () => {
   const [board, setBoard] = React.useState(() => createBoard())
@@ -14,7 +14,7 @@ export const BoardView = () => {
   return (
     <div>
       {winner !== 0 && <div>Ganador: p{winner}</div>}
-      <div role="grid" className="grid grid-cols-7 gap-1">
+      <div role="grid" className={`grid grid-cols-${COLS} gap-1`}>
         {board.map((row, r) =>
           row.map((cell, c) => (
             <div
