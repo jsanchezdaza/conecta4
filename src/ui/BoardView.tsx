@@ -11,6 +11,7 @@ export const BoardView = () => {
             key={`${r}-${c}`}
             data-testid="cell"
             role="gridcell"
+            aria-label="cell"
             className="size-10 rounded bg-slate-200"
           />
         )),
