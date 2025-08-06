@@ -3,12 +3,7 @@ import { Connect4Game } from '@/games/connect4/Connect4Game'
 
 export const Connect4Page = () => {
   return (
-    <div className="min-h-lvh" style={{
-      paddingTop: 'max(0.5rem, env(safe-area-inset-top))',
-      paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))',
-      paddingLeft: 'max(0.5rem, env(safe-area-inset-left))',
-      paddingRight: 'max(0.5rem, env(safe-area-inset-right))'
-    }}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 p-2 sm:p-4">
       <div className="flex flex-col items-center max-w-lg mx-auto">
         <h1 className="mb-4 sm:mb-8 mt-2 sm:mt-6 text-4xl sm:text-7xl font-black tracking-wide text-white" style={{
           fontFamily: '"Arial Black", Impact, sans-serif',
