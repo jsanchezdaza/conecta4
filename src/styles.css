@@ -9,6 +9,7 @@ html, body {
 #root {
   min-height: 100vh;
   min-height: 100dvh; /* dynamic viewport height for mobile */
+  min-height: calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom)); /* extend into safe areas */
 }
 
 @keyframes spin-slow {
