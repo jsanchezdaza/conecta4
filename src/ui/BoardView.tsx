@@ -14,11 +14,21 @@ export const BoardView = () => {
 
   return (
     <div>
-      <div className="mb-2 flex items-center gap-2">
-        {state.winner ? <div>Ganador: p{state.winner}</div> : state.draw ? <div>Empate</div> : null}
-        <button onClick={reset}>Reiniciar</button>
+      <div className="mb-4 text-center">
+        {state.winner ? (
+          <div className="text-lg font-semibold text-white">Winner: Player {state.winner}</div>
+        ) : state.draw ? (
+          <div className="text-lg font-semibold text-white">Draw!</div>
+        ) : (
+          <div className="text-lg font-semibold text-white">
+            Player{' '}
+            <span className={state.turn === 1 ? 'text-red-500' : 'text-yellow-500'}>
+              {state.turn}
+            </span>'s Turn
+          </div>
+        )}
       </div>
-      <div role="grid" className={`grid grid-cols-${COLS} gap-1`}>
+      <div role="grid" className="grid grid-cols-7 gap-1">
         {state.board.map((row, r) =>
           row.map((cell, c) => (
             <div
@@ -28,15 +38,20 @@ export const BoardView = () => {
               aria-label={cell === 0 ? 'cell' : `cell p${cell}`}
               className={
                 cell === 1
-                  ? 'size-10 rounded bg-red-500'
+                  ? 'size-16 rounded-full bg-red-500'
                   : cell === 2
-                  ? 'size-10 rounded bg-yellow-400'
-                  : 'size-10 rounded bg-slate-200'
+                  ? 'size-16 rounded-full bg-yellow-400'
+                  : 'size-16 rounded-full bg-slate-300'
               }
               onClick={() => onClick(c)}
             />
           )),
         )}
+      </div>
+      <div className="mt-4 text-center">
+        <button className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600" onClick={reset}>
+          Reset
+        </button>
       </div>
     </div>
   )
