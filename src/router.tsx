@@ -1,4 +1,5 @@
 import React from 'react'
+import { Layout } from '@/components/Layout'
 
 interface Route {
   path: string
@@ -31,18 +32,20 @@ export const Router: React.FC = () => {
   
   if (!route) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">404 - Game Not Found</h1>
-          <p className="text-slate-300 mb-6">The game you're looking for doesn't exist.</p>
-          <a 
-            href="/connect4" 
-            className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all"
-          >
-            Go to Connect 4
-          </a>
+      <Layout>
+        <div className="flex items-center justify-center h-full">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-white mb-4">404 - Game Not Found</h1>
+            <p className="text-slate-300 mb-6">The game you're looking for doesn't exist.</p>
+            <a 
+              href="/connect4" 
+              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all"
+            >
+              Go to Connect 4
+            </a>
+          </div>
         </div>
-      </div>
+      </Layout>
     )
   }
 
@@ -50,11 +53,15 @@ export const Router: React.FC = () => {
 
   return (
     <React.Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-white text-xl">Loading game...</div>
-      </div>
+      <Layout>
+        <div className="flex items-center justify-center h-full">
+          <div className="text-white text-xl">Loading game...</div>
+        </div>
+      </Layout>
     }>
-      <Component />
+      <Layout>
+        <Component />
+      </Layout>
     </React.Suspense>
   )
 }

@@ -3,7 +3,7 @@ import { Connect4Game } from '@/games/connect4/Connect4Game'
 
 export const Connect4Page = () => {
   return (
-    <div className="min-h-screen px-2 sm:px-4">
+    <div className="px-2 sm:px-4">
       <div className="flex flex-col items-center max-w-lg mx-auto pt-2 sm:pt-6">
         <h1 className="mb-4 sm:mb-8 mt-2 sm:mt-6 text-4xl sm:text-7xl font-black tracking-wide text-white" style={{
           fontFamily: '"Arial Black", Impact, sans-serif',
