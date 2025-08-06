@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLS, initialState, step } from '@/board'
+import { initialState, step } from '@/board'
 
 export const BoardView = () => {
   const [state, setState] = React.useState(() => initialState())
