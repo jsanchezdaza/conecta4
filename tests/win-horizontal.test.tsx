@@ -18,6 +18,6 @@ describe('Win - horizontal', () => {
     fireEvent.click(cells[idx(0, 6)]) // p2 elsewhere
     fireEvent.click(cells[idx(0, 3)]) // p1 -> (5,3)
 
-    expect(screen.getByText(/ganador: p1/i)).toBeInTheDocument()
+    expect(screen.getByText(/winner: player 1/i)).toBeInTheDocument()
   })
 })

@@ -19,6 +19,6 @@ describe('Win - vertical', () => {
     fireEvent.click(cells[idx(0, 0)]) // p2 elsewhere
     clickCol() // p1 at row2 (fourth)
 
-    expect(screen.getByText(/ganador: p1/i)).toBeInTheDocument()
+    expect(screen.getByText(/winner: player 1/i)).toBeInTheDocument()
   })
 })

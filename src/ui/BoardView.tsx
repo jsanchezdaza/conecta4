@@ -38,10 +38,27 @@ export const BoardView = () => {
               aria-label={cell === 0 ? 'cell' : `cell p${cell}`}
               className={
                 cell === 1
-                  ? 'size-16 rounded-full bg-red-500'
+                  ? 'size-16 rounded-full bg-red-500 border border-red-600 cursor-pointer hover:bg-red-600 transition-colors'
                   : cell === 2
-                  ? 'size-16 rounded-full bg-yellow-400'
-                  : 'size-16 rounded-full bg-slate-300'
+                  ? 'size-16 rounded-full bg-yellow-400 border border-yellow-500 cursor-pointer hover:bg-yellow-500 transition-colors'
+                  : 'size-16 rounded-full bg-slate-300 border border-slate-400 cursor-pointer hover:bg-slate-200 transition-colors'
+              }
+              style={
+                cell === 1
+                  ? {
+                      background: `
+                        radial-gradient(circle at 35% 25%, rgba(255,255,255,0.3), transparent 60%),
+                        #dc2626
+                      `,
+                    }
+                  : cell === 2
+                  ? {
+                      background: `
+                        radial-gradient(circle at 35% 25%, rgba(255,255,255,0.3), transparent 60%),
+                        #facc15
+                      `,
+                    }
+                  : undefined
               }
               onClick={() => onClick(c)}
             />
@@ -49,8 +66,21 @@ export const BoardView = () => {
         )}
       </div>
       <div className="mt-4 text-center">
-        <button className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600" onClick={reset}>
-          Reset
+        <button 
+          className="group relative px-6 py-3 text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg hover:from-purple-700 hover:to-pink-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20"
+          style={{
+            background: `
+              linear-gradient(45deg, #9333ea, #ec4899),
+              radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent 50%)
+            `,
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+          }}
+          onClick={reset}
+        >
+          <span className="relative z-10">
+            NEW GAME
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-200" />
         </button>
       </div>
     </div>

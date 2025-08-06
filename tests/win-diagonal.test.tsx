@@ -29,6 +29,6 @@ describe('Win - diagonal', () => {
     // Final p1 to complete at (2,3)
     fireEvent.click(cells[idx(0, 3)]) // p1: (2,3)
 
-    expect(screen.getByText(/ganador: p1/i)).toBeInTheDocument()
+    expect(screen.getByText(/winner: player 1/i)).toBeInTheDocument()
   })
 })

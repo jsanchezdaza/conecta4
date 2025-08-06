@@ -14,7 +14,7 @@ describe('Draw', () => {
       for (const c of order) fireEvent.click(cells[idx(0, c)])
     }
 
-    expect(screen.getByText(/empate/i)).toBeInTheDocument()
+    expect(screen.getByText(/draw/i)).toBeInTheDocument()
 
     const before = cells[idx(5, 0)].getAttribute('aria-label')
     fireEvent.click(cells[idx(0, 0)])
