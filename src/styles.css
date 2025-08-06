@@ -4,19 +4,38 @@
   --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  height: 100svh;
+  height: -webkit-fill-available;
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   background: var(--bg-gradient);
 }
 
 body {
   color: #ffffff;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  height: 100svh;
+  height: -webkit-fill-available;
 }
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
+  min-height: 100svh;
+  min-height: -webkit-fill-available;
 }
 
 @keyframes spin-slow {
