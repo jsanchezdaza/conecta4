@@ -31,7 +31,7 @@ export const Router: React.FC = () => {
   
   if (!route) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex items-center justify-center">
+      <div className="min-h-screen min-h-dvh bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">404 - Game Not Found</h1>
           <p className="text-slate-300 mb-6">The game you're looking for doesn't exist.</p>
@@ -50,7 +50,7 @@ export const Router: React.FC = () => {
 
   return (
     <React.Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex items-center justify-center">
+      <div className="min-h-screen min-h-dvh bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex items-center justify-center">
         <div className="text-white text-xl">Loading game...</div>
       </div>
     }>
