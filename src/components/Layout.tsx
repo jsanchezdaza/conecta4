@@ -5,23 +5,27 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const divRef = React.useRef<HTMLDivElement>(null)
-  
-  React.useEffect(() => {
-    if (divRef.current) {
-      divRef.current.style.minHeight = '100vh'
-      divRef.current.style.setProperty('min-height', '100dvh')
-      divRef.current.style.setProperty('min-height', '100svh')
-      divRef.current.style.setProperty('min-height', '-webkit-fill-available')
-    }
-  }, [])
-
   return (
-    <div 
-      ref={divRef}
-      className="bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900"
-    >
-      {children}
-    </div>
+    <>
+      {/* Fixed background that covers entire screen */}
+      <div 
+        className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: -1
+        }}
+      />
+      
+      {/* Content container */}
+      <div className="relative min-h-screen">
+        {children}
+      </div>
+    </>
   )
 }
