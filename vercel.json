@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/connect4", "destination": "/" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
