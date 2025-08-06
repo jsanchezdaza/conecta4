@@ -4,9 +4,15 @@
   --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-gradient);
+}
+
 body {
   color: #ffffff;
-  background: var(--bg-gradient);
 }
 
 #root {
