@@ -31,7 +31,7 @@ export const Router: React.FC = () => {
   
   if (!route) {
     return (
-      <div className="min-h-screen min-h-svh flex items-center justify-center" style={{
+      <div className="min-h-lvh flex items-center justify-center" style={{
         paddingTop: 'env(safe-area-inset-top)',
         paddingBottom: 'env(safe-area-inset-bottom)',
         paddingLeft: 'env(safe-area-inset-left)',
@@ -55,7 +55,7 @@ export const Router: React.FC = () => {
 
   return (
     <React.Suspense fallback={
-      <div className="min-h-screen min-h-svh flex items-center justify-center" style={{
+      <div className="min-h-lvh flex items-center justify-center" style={{
         paddingTop: 'env(safe-area-inset-top)',
         paddingBottom: 'env(safe-area-inset-bottom)',
         paddingLeft: 'env(safe-area-inset-left)',

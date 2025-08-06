@@ -3,7 +3,7 @@ import { Connect4Game } from '@/games/connect4/Connect4Game'
 
 export const Connect4Page = () => {
   return (
-    <div className="min-h-screen min-h-svh" style={{
+    <div className="min-h-lvh" style={{
       paddingTop: 'max(0.5rem, env(safe-area-inset-top))',
       paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))',
       paddingLeft: 'max(0.5rem, env(safe-area-inset-left))',
