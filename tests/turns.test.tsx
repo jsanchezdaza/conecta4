@@ -1,10 +1,10 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { BoardView } from '@/ui/BoardView'
+import { screen, fireEvent } from '@testing-library/react'
+import { startGameWithPlayers } from './test-utils'
 
 describe('Turns', () => {
   it('alternates players p1 then p2 on consecutive clicks', () => {
-    render(<BoardView />)
+    startGameWithPlayers()
     const cells = screen.getAllByRole('gridcell')
     const col = 2
     const idx = (r: number, c: number) => r * 7 + c

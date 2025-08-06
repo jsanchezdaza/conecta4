@@ -1,8 +1,12 @@
 import React from 'react'
 import { initialState, step } from '@/board'
 
+type GamePhase = 'setup' | 'playing'
+
 export const BoardView = () => {
   const [state, setState] = React.useState(() => initialState())
+  const [gamePhase, setGamePhase] = React.useState<GamePhase>('setup')
+  const [playerNames, setPlayerNames] = React.useState({ player1: '', player2: '' })
 
   const onClick = (col: number) => {
     setState((s) => step(s, col))
@@ -10,20 +14,86 @@ export const BoardView = () => {
 
   const reset = () => {
     setState(initialState())
+    setGamePhase('setup')
+    setPlayerNames({ player1: '', player2: '' })
+  }
+
+  const startGame = () => {
+    if (playerNames.player1.trim() && playerNames.player2.trim()) {
+      setGamePhase('playing')
+    }
+  }
+
+  const getCurrentPlayerName = () => {
+    return state.turn === 1 ? playerNames.player1 : playerNames.player2
+  }
+
+  if (gamePhase === 'setup') {
+    return (
+      <div className="text-center">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-white mb-4">Choose Player Names</h2>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-red-400 mb-2">
+                Player 1 (Red)
+              </label>
+              <input
+                type="text"
+                value={playerNames.player1}
+                onChange={(e) => setPlayerNames(prev => ({ ...prev, player1: e.target.value }))}
+                className="w-64 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                placeholder="Enter player 1 name"
+                maxLength={20}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-yellow-400 mb-2">
+                Player 2 (Yellow)
+              </label>
+              <input
+                type="text"
+                value={playerNames.player2}
+                onChange={(e) => setPlayerNames(prev => ({ ...prev, player2: e.target.value }))}
+                className="w-64 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                placeholder="Enter player 2 name"
+                maxLength={20}
+              />
+            </div>
+          </div>
+          <button
+            onClick={startGame}
+            disabled={!playerNames.player1.trim() || !playerNames.player2.trim()}
+            className="mt-6 px-8 py-3 text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            style={{
+              background: !playerNames.player1.trim() || !playerNames.player2.trim() 
+                ? '#64748b' 
+                : `linear-gradient(45deg, #059669, #10b981)`,
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+            }}
+          >
+            START GAME
+          </button>
+        </div>
+      </div>
+    )
   }
 
   return (
     <div>
       <div className="mb-4 text-center">
         {state.winner ? (
-          <div className="text-lg font-semibold text-white">Winner: Player {state.winner}</div>
+          <div className="text-lg font-semibold text-white">
+            Winner: <span className={state.winner === 1 ? 'text-red-500' : 'text-yellow-500'}>
+              {state.winner === 1 ? playerNames.player1 : playerNames.player2}
+            </span>
+          </div>
         ) : state.draw ? (
           <div className="text-lg font-semibold text-white">Draw!</div>
         ) : (
           <div className="text-lg font-semibold text-white">
-            Player{' '}
             <span className={state.turn === 1 ? 'text-red-500' : 'text-yellow-500'}>
-              {state.turn}
+              {getCurrentPlayerName()}
             </span>'s Turn
           </div>
         )}
