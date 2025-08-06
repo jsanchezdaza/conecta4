@@ -12,7 +12,7 @@ describe('Reset', () => {
     fireEvent.click(cells[idx(0, 0)])
     fireEvent.click(cells[idx(0, 1)])
 
-    fireEvent.click(screen.getByRole('button', { name: /reiniciar/i }))
+    fireEvent.click(screen.getByRole('button', { name: /reset/i }))
 
     expect(cells.every((c) => c.getAttribute('aria-label') === 'cell')).toBe(true)
 
