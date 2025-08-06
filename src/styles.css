@@ -4,12 +4,13 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
 }
 
 #root {
   min-height: 100vh;
   min-height: 100dvh; /* dynamic viewport height for mobile */
-  min-height: calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom)); /* extend into safe areas */
+  min-height: 100svh; /* small viewport height - covers full screen including safe areas */
 }
 
 @keyframes spin-slow {

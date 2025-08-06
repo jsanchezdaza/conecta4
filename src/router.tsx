@@ -31,8 +31,7 @@ export const Router: React.FC = () => {
   
   if (!route) {
     return (
-      <div className="min-h-screen min-h-dvh bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex items-center justify-center" style={{
-        minHeight: 'calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom))',
+      <div className="min-h-screen min-h-svh flex items-center justify-center" style={{
         paddingTop: 'env(safe-area-inset-top)',
         paddingBottom: 'env(safe-area-inset-bottom)',
         paddingLeft: 'env(safe-area-inset-left)',
@@ -56,8 +55,7 @@ export const Router: React.FC = () => {
 
   return (
     <React.Suspense fallback={
-      <div className="min-h-screen min-h-dvh bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex items-center justify-center" style={{
-        minHeight: 'calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom))',
+      <div className="min-h-screen min-h-svh flex items-center justify-center" style={{
         paddingTop: 'env(safe-area-inset-top)',
         paddingBottom: 'env(safe-area-inset-bottom)',
         paddingLeft: 'env(safe-area-inset-left)',
