@@ -83,13 +83,47 @@ export const BoardView = () => {
     <div>
       <div className="mb-4 text-center">
         {state.winner ? (
-          <div className="text-lg font-semibold text-white">
-            Winner: <span className={state.winner === 1 ? 'text-red-500' : 'text-yellow-500'}>
-              {state.winner === 1 ? playerNames.player1 : playerNames.player2}
-            </span>
+          <div className="relative">
+            {/* Celebration Background */}
+            <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 rounded-2xl opacity-20 blur-xl"></div>
+            
+            {/* Winner Announcement */}
+            <div className="relative bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 shadow-2xl border-4 border-yellow-300 animate-bounce">
+              <div className="text-center">
+                {/* Trophy/Crown Icon */}
+                <div className="text-6xl animate-spin-slow mb-2">👑</div>
+                
+                {/* Winner Text */}
+                <div className="text-3xl font-black text-white mb-2" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                  🎉 WINNER! 🎉
+                </div>
+                
+                {/* Player Name */}
+                <div className="text-2xl font-bold text-slate-900 bg-white/90 rounded-lg px-4 py-2 inline-block shadow-lg">
+                  <span className={state.winner === 1 ? 'text-red-600' : 'text-yellow-600'}>
+                    {state.winner === 1 ? playerNames.player1 : playerNames.player2}
+                  </span>
+                </div>
+                
+                {/* Celebration Message */}
+                <div className="text-lg font-semibold text-white mt-2" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                  Congratulations! 🏆
+                </div>
+              </div>
+            </div>
           </div>
         ) : state.draw ? (
-          <div className="text-lg font-semibold text-white">Draw!</div>
+          <div className="relative">
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-4 shadow-lg border-2 border-blue-400">
+              <div className="text-center">
+                <div className="text-4xl mb-2">🤝</div>
+                <div className="text-2xl font-bold text-white" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                  It's a Draw!
+                </div>
+                <div className="text-sm text-blue-100 mt-1">Great game, both players! 🎲</div>
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="text-lg font-semibold text-white">
             <span className={state.turn === 1 ? 'text-red-500' : 'text-yellow-500'}>
