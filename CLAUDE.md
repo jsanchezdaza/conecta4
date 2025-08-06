@@ -46,3 +46,5 @@ This is a Connect 4 game built with React, TypeScript, and Tailwind CSS followin
 - **Styling**: Tailwind v4 with PostCSS, keep className attributes concise
 - **Accessibility**: Use role="grid" and role="gridcell", aria-label for screen readers
 - **Commits**: English messages, no direct push to main without review
+- **Commit guidelines**: NEVER include "Generated with Claude" or similar AI attribution in commit messages
+- **Co-authoring**: NEVER add Claude or AI tools as co-authors in commits
