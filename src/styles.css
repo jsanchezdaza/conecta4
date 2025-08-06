@@ -4,13 +4,38 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
+}
+
+body {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
 }
 
 #root {
+  position: relative;
   min-height: 100vh;
-  min-height: 100dvh; /* dynamic viewport height for mobile */
   min-height: 100svh; /* small viewport height - covers full screen including safe areas */
+}
+
+/* Create a background layer that extends into safe areas */
+#root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
+  /* Extend into safe areas */
+  margin-top: calc(-1 * env(safe-area-inset-top));
+  margin-bottom: calc(-1 * env(safe-area-inset-bottom));
+  margin-left: calc(-1 * env(safe-area-inset-left));
+  margin-right: calc(-1 * env(safe-area-inset-right));
 }
 
 @keyframes spin-slow {
