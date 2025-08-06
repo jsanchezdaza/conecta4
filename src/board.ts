@@ -3,6 +3,8 @@ export const COLS = 7
 export type Cell = 0 | 1 | 2
 export type Board = Cell[][]
 
+export type GameState = { board: Board; turn: 1 | 2; winner: 0 | 1 | 2; draw: boolean }
+
 export const createBoard = (rows = ROWS, cols = COLS): Board =>
   Array.from({ length: rows }, () => Array.from({ length: cols }, () => 0 as Cell))
 
@@ -16,6 +18,18 @@ export const dropPiece = (board: Board, col: number, player: 1 | 2): Board => {
     }
   }
   return board
+}
+
+export const initialState = (): GameState => ({ board: createBoard(), turn: 1, winner: 0, draw: false })
+
+export const step = (state: GameState, col: number): GameState => {
+  if (state.winner || state.draw) return state
+  const nextBoard = dropPiece(state.board, col, state.turn)
+  if (nextBoard === state.board) return state
+  const winner = checkWinner(nextBoard)
+  const draw = winner === 0 && isBoardFull(nextBoard)
+  const turn: 1 | 2 = winner || draw ? state.turn : state.turn === 1 ? 2 : 1
+  return { board: nextBoard, turn, winner, draw }
 }
 
 export const DIRECTIONS = [
@@ -51,9 +65,13 @@ export const checkWinner = (board: Board): 0 | 1 | 2 => {
   const cols = board[0].length
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      if (board[row][col] === 0) continue
+      const cell = board[row][col]
+      if (cell === 0) continue
       for (const [deltaRow, deltaCol] of DIRECTIONS) {
-        if (has4From(board, row, col, deltaRow, deltaCol)) return board[row][col]
+        const prevRow = row - deltaRow
+        const prevCol = col - deltaCol
+        if (inBounds(prevRow, prevCol, rows, cols) && board[prevRow][prevCol] === cell) continue
+        if (has4From(board, row, col, deltaRow, deltaCol)) return cell
       }
     }
   }

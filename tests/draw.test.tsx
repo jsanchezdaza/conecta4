@@ -9,17 +9,9 @@ describe('Draw', () => {
     render(<BoardView />)
     const cells = screen.getAllByRole('gridcell')
 
-    // Fill board without creating 4 in a row: alternate column orders each row
-    const orders = [
-      [0,2,4,6,1,3,5],
-      [1,3,5,0,2,4,6],
-      [0,2,4,6,1,3,5],
-      [1,3,5,0,2,4,6],
-      [0,2,4,6,1,3,5],
-      [1,3,5,0,2,4,6],
-    ]
+    const order = [0, 2, 4, 6, 1, 3, 5]
     for (let r = 0; r < 6; r++) {
-      for (const c of orders[r]) fireEvent.click(cells[idx(0, c)])
+      for (const c of order) fireEvent.click(cells[idx(0, c)])
     }
 
     expect(screen.getByText(/empate/i)).toBeInTheDocument()
