@@ -32,7 +32,7 @@ export const BoardView = () => {
     return (
       <div className="text-center">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-white mb-4">Choose Player Names</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-4">Choose Player Names</h2>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-red-400 mb-2">
@@ -42,7 +42,7 @@ export const BoardView = () => {
                 type="text"
                 value={playerNames.player1}
                 onChange={(e) => setPlayerNames(prev => ({ ...prev, player1: e.target.value }))}
-                className="w-64 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="w-full max-w-64 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 placeholder="Enter player 1 name"
                 maxLength={20}
               />
@@ -55,7 +55,7 @@ export const BoardView = () => {
                 type="text"
                 value={playerNames.player2}
                 onChange={(e) => setPlayerNames(prev => ({ ...prev, player2: e.target.value }))}
-                className="w-64 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                className="w-full max-w-64 px-4 py-2 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                 placeholder="Enter player 2 name"
                 maxLength={20}
               />
@@ -64,7 +64,7 @@ export const BoardView = () => {
           <button
             onClick={startGame}
             disabled={!playerNames.player1.trim() || !playerNames.player2.trim()}
-            className="mt-6 px-8 py-3 text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="mt-6 px-6 sm:px-8 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             style={{
               background: !playerNames.player1.trim() || !playerNames.player2.trim() 
                 ? '#64748b' 
@@ -88,25 +88,25 @@ export const BoardView = () => {
             <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 rounded-2xl opacity-20 blur-xl"></div>
             
             {/* Winner Announcement */}
-            <div className="relative bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 shadow-2xl border-4 border-yellow-300 animate-bounce">
+            <div className="relative bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-4 sm:p-6 shadow-2xl border-4 border-yellow-300 animate-bounce">
               <div className="text-center">
                 {/* Trophy/Crown Icon */}
-                <div className="text-6xl animate-spin-slow mb-2">👑</div>
+                <div className="text-4xl sm:text-6xl animate-spin-slow mb-2">👑</div>
                 
                 {/* Winner Text */}
-                <div className="text-3xl font-black text-white mb-2" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                <div className="text-xl sm:text-3xl font-black text-white mb-2" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
                   🎉 WINNER! 🎉
                 </div>
                 
                 {/* Player Name */}
-                <div className="text-2xl font-bold text-slate-900 bg-white/90 rounded-lg px-4 py-2 inline-block shadow-lg">
+                <div className="text-lg sm:text-2xl font-bold text-slate-900 bg-white/90 rounded-lg px-3 sm:px-4 py-2 inline-block shadow-lg">
                   <span className={state.winner === 1 ? 'text-red-600' : 'text-yellow-600'}>
                     {state.winner === 1 ? playerNames.player1 : playerNames.player2}
                   </span>
                 </div>
                 
                 {/* Celebration Message */}
-                <div className="text-lg font-semibold text-white mt-2" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                <div className="text-base sm:text-lg font-semibold text-white mt-2" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
                   Congratulations! 🏆
                 </div>
               </div>
@@ -116,16 +116,16 @@ export const BoardView = () => {
           <div className="relative">
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-4 shadow-lg border-2 border-blue-400">
               <div className="text-center">
-                <div className="text-4xl mb-2">🤝</div>
-                <div className="text-2xl font-bold text-white" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                <div className="text-3xl sm:text-4xl mb-2">🤝</div>
+                <div className="text-xl sm:text-2xl font-bold text-white" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
                   It's a Draw!
                 </div>
-                <div className="text-sm text-blue-100 mt-1">Great game, both players! 🎲</div>
+                <div className="text-xs sm:text-sm text-blue-100 mt-1">Great game, both players! 🎲</div>
               </div>
             </div>
           </div>
         ) : (
-          <div className="text-lg font-semibold text-white">
+          <div className="text-base sm:text-lg font-semibold text-white">
             <span className={state.turn === 1 ? 'text-red-500' : 'text-yellow-500'}>
               {getCurrentPlayerName()}
             </span>'s Turn
@@ -142,10 +142,10 @@ export const BoardView = () => {
               aria-label={cell === 0 ? 'cell' : `cell p${cell}`}
               className={
                 cell === 1
-                  ? 'size-16 rounded-full bg-red-500 border border-red-600 cursor-pointer hover:bg-red-600 transition-colors'
+                  ? 'size-10 sm:size-16 rounded-full bg-red-500 border border-red-600 cursor-pointer hover:bg-red-600 transition-colors'
                   : cell === 2
-                  ? 'size-16 rounded-full bg-yellow-400 border border-yellow-500 cursor-pointer hover:bg-yellow-500 transition-colors'
-                  : 'size-16 rounded-full bg-slate-300 border border-slate-400 cursor-pointer hover:bg-slate-200 transition-colors'
+                  ? 'size-10 sm:size-16 rounded-full bg-yellow-400 border border-yellow-500 cursor-pointer hover:bg-yellow-500 transition-colors'
+                  : 'size-10 sm:size-16 rounded-full bg-slate-300 border border-slate-400 cursor-pointer hover:bg-slate-200 transition-colors'
               }
               style={
                 cell === 1
@@ -171,7 +171,7 @@ export const BoardView = () => {
       </div>
       <div className="mt-4 text-center">
         <button 
-          className="group relative px-6 py-3 text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg hover:from-purple-700 hover:to-pink-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20"
+          className="group relative px-4 sm:px-6 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg hover:from-purple-700 hover:to-pink-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20"
           style={{
             background: `
               linear-gradient(45deg, #9333ea, #ec4899),

@@ -13,7 +13,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Test watch**: `pnpm test:watch` or `pnpm test:ui`
 - **Test single file**: `pnpm test -- tests/<filename>.test.ts`
 
-Package manager: **pnpm** (not npm or yarn)
+Package manager: **pnpm** (not npm or yarn) - ALWAYS use pnpm for all package management commands
 
 ## Architecture Overview
 
