@@ -1,11 +1,26 @@
 @import 'tailwindcss';
 
+html {
+  height: 100%;
+}
+
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
+  background-attachment: fixed;
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* Ensure full height coverage on iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  #root {
+    min-height: -webkit-fill-available;
+  }
 }
 
 @keyframes spin-slow {
