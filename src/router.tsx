@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from '@/components/Layout'
+import { Layout } from './components/Layout'
 
 interface Route {
   path: string
@@ -9,7 +9,7 @@ interface Route {
 const routes: Route[] = [
   {
     path: '/connect4',
-    component: React.lazy(() => import('@/pages/Connect4Page').then(m => ({ default: m.Connect4Page })))
+    component: React.lazy(() => import('./pages/Connect4Page').then(m => ({ default: m.Connect4Page })))
   }
 ]
 

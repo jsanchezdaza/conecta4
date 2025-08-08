@@ -1,5 +1,5 @@
 import React from 'react'
-import { Connect4Game } from '@/games/connect4/Connect4Game'
+import { Connect4Game } from '../games/connect4/Connect4Game'
 
 export const Connect4Page = () => {
   return (
