@@ -2,8 +2,8 @@
 node_modules/
 
 # Development files
-src/
-tests/
+# src/ - commented out as it's needed for build
+# tests/ - commented out as it's needed for build
 
 # Configuration files
 *.config.js
