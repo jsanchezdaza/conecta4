@@ -8,7 +8,7 @@ interface Route {
 
 const routes: Route[] = [
   {
-    path: '/connect4',
+    path: '/conecta4',
     component: React.lazy(() => import('./pages/Connect4Page').then(m => ({ default: m.Connect4Page })))
   }
 ]
@@ -25,8 +25,8 @@ export const Router: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  // Default to /connect4 for root path
-  const path = currentPath === '/' ? '/connect4' : currentPath
+  // Default to /conecta4 for root path
+  const path = currentPath === '/' ? '/conecta4' : currentPath
   
   const route = routes.find(r => r.path === path)
   
@@ -38,7 +38,7 @@ export const Router: React.FC = () => {
             <h1 className="text-4xl font-bold text-white mb-4">404 - Game Not Found</h1>
             <p className="text-slate-300 mb-6">The game you're looking for doesn't exist.</p>
             <a 
-              href="/connect4" 
+              href="/conecta4" 
               className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all"
             >
               Go to Connect 4
