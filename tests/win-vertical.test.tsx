@@ -1,10 +1,9 @@
-import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { BoardView } from '@/ui/BoardView'
+import { screen, fireEvent } from '@testing-library/react'
+import { startGameWithPlayers } from './test-utils'
 
 describe('Win - vertical', () => {
   it('declares p1 winner on 4 in a column', () => {
-    render(<BoardView />)
+    startGameWithPlayers()
     const cells = screen.getAllByRole('gridcell')
     const col = 1
     const idx = (r: number, c: number) => r * 7 + c
@@ -19,6 +18,6 @@ describe('Win - vertical', () => {
     fireEvent.click(cells[idx(0, 0)]) // p2 elsewhere
     clickCol() // p1 at row2 (fourth)
 
-    expect(screen.getByText(/winner: player 1/i)).toBeInTheDocument()
+    expect(screen.getByText('TestPlayer1')).toBeInTheDocument()
   })
 })

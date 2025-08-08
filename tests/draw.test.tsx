@@ -1,12 +1,11 @@
-import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { BoardView } from '@/ui/BoardView'
+import { screen, fireEvent } from '@testing-library/react'
+import { startGameWithPlayers } from './test-utils'
 
 const idx = (row: number, col: number) => row * 7 + col
 
 describe('Draw', () => {
   it('declares draw when board is full without a winner and blocks further moves', () => {
-    render(<BoardView />)
+    startGameWithPlayers()
     const cells = screen.getAllByRole('gridcell')
 
     const order = [0, 2, 4, 6, 1, 3, 5]

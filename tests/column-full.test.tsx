@@ -1,12 +1,11 @@
-import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { BoardView } from '@/ui/BoardView'
+import { screen, fireEvent } from '@testing-library/react'
+import { startGameWithPlayers } from './test-utils'
 
 const idx = (row: number, col: number) => row * 7 + col
 
 describe('Column full', () => {
   it('ignores clicks when a column is full', () => {
-    render(<BoardView />)
+    startGameWithPlayers()
     const cells = screen.getAllByRole('gridcell')
     const col = 4
 

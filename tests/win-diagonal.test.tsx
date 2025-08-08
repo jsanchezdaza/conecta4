@@ -1,12 +1,11 @@
-import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { BoardView } from '@/ui/BoardView'
+import { screen, fireEvent } from '@testing-library/react'
+import { startGameWithPlayers } from './test-utils'
 
 const idx = (row: number, col: number) => row * 7 + col
 
 describe('Win - diagonal', () => {
   it('declares p1 winner on 4 in a diagonal ↘︎', () => {
-    render(<BoardView />)
+    startGameWithPlayers()
     const cells = screen.getAllByRole('gridcell')
 
     // Target diagonal for p1: (5,0),(4,1),(3,2),(2,3)
@@ -29,6 +28,6 @@ describe('Win - diagonal', () => {
     // Final p1 to complete at (2,3)
     fireEvent.click(cells[idx(0, 3)]) // p1: (2,3)
 
-    expect(screen.getByText(/winner: player 1/i)).toBeInTheDocument()
+    expect(screen.getByText('TestPlayer1')).toBeInTheDocument()
   })
 })

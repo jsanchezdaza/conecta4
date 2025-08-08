@@ -1,10 +1,9 @@
-import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { BoardView } from '@/ui/BoardView'
+import { screen, fireEvent } from '@testing-library/react'
+import { startGameWithPlayers } from './test-utils'
 
 describe('Drop piece', () => {
   it('on click column, drops player 1 piece to lowest empty cell', () => {
-    render(<BoardView />)
+    startGameWithPlayers()
     const cells = screen.getAllByRole('gridcell')
     const col = 3
     const getIndex = (r: number, c: number) => r * 7 + c
