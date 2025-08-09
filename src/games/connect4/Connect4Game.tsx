@@ -65,12 +65,6 @@ export const Connect4Game = () => {
             onClick={startGame}
             disabled={!playerNames.player1.trim() || !playerNames.player2.trim()}
             className="mt-6 px-6 sm:px-8 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            style={{
-              background: !playerNames.player1.trim() || !playerNames.player2.trim() 
-                ? '#64748b' 
-                : `linear-gradient(45deg, #059669, #10b981)`,
-              textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-            }}
           >
             START GAME
           </button>
@@ -94,7 +88,7 @@ export const Connect4Game = () => {
                 <div className="text-4xl sm:text-6xl animate-spin-slow mb-2">👑</div>
                 
                 {/* Winner Text */}
-                <div className="text-xl sm:text-3xl font-black text-white mb-2" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                <div className="text-xl sm:text-3xl font-black text-white mb-2">
                   🎉 WINNER! 🎉
                 </div>
                 
@@ -106,7 +100,7 @@ export const Connect4Game = () => {
                 </div>
                 
                 {/* Celebration Message */}
-                <div className="text-base sm:text-lg font-semibold text-white mt-2" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                <div className="text-base sm:text-lg font-semibold text-white mt-2">
                   Congratulations! 🏆
                 </div>
               </div>
@@ -117,7 +111,7 @@ export const Connect4Game = () => {
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-4 shadow-lg border-2 border-blue-400">
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl mb-2">🤝</div>
-                <div className="text-xl sm:text-2xl font-bold text-white" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                <div className="text-xl sm:text-2xl font-bold text-white">
                   It's a Draw!
                 </div>
                 <div className="text-xs sm:text-sm text-blue-100 mt-1">Great game, both players! 🎲</div>
@@ -147,23 +141,6 @@ export const Connect4Game = () => {
                   ? 'size-10 sm:size-16 rounded-full bg-yellow-400 border border-yellow-500 cursor-pointer hover:bg-yellow-500 transition-colors'
                   : 'size-10 sm:size-16 rounded-full bg-slate-300 border border-slate-400 cursor-pointer hover:bg-slate-200 transition-colors'
               }
-              style={
-                cell === 1
-                  ? {
-                      background: `
-                        radial-gradient(circle at 35% 25%, rgba(255,255,255,0.3), transparent 60%),
-                        #dc2626
-                      `,
-                    }
-                  : cell === 2
-                  ? {
-                      background: `
-                        radial-gradient(circle at 35% 25%, rgba(255,255,255,0.3), transparent 60%),
-                        #facc15
-                      `,
-                    }
-                  : undefined
-              }
               onClick={() => onClick(c)}
             />
           )),
@@ -172,13 +149,6 @@ export const Connect4Game = () => {
       <div className="mt-4 text-center">
         <button 
           className="group relative px-4 sm:px-6 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg hover:from-purple-700 hover:to-pink-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20"
-          style={{
-            background: `
-              linear-gradient(45deg, #9333ea, #ec4899),
-              radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent 50%)
-            `,
-            textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-          }}
           onClick={reset}
         >
           <span className="relative z-10">

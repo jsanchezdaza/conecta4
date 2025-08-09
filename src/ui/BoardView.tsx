@@ -94,7 +94,7 @@ export const BoardView = () => {
                 <div className="text-4xl sm:text-6xl animate-spin-slow mb-2">👑</div>
                 
                 {/* Winner Text */}
-                <div className="text-xl sm:text-3xl font-black text-white mb-2" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                <div className="text-xl sm:text-3xl font-black text-white mb-2" >
                   🎉 WINNER! 🎉
                 </div>
                 
@@ -106,7 +106,7 @@ export const BoardView = () => {
                 </div>
                 
                 {/* Celebration Message */}
-                <div className="text-base sm:text-lg font-semibold text-white mt-2" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                <div className="text-base sm:text-lg font-semibold text-white mt-2" >
                   Congratulations! 🏆
                 </div>
               </div>
@@ -117,7 +117,7 @@ export const BoardView = () => {
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-4 shadow-lg border-2 border-blue-400">
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl mb-2">🤝</div>
-                <div className="text-xl sm:text-2xl font-bold text-white" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                <div className="text-xl sm:text-2xl font-bold text-white" >
                   It's a Draw!
                 </div>
                 <div className="text-xs sm:text-sm text-blue-100 mt-1">Great game, both players! 🎲</div>
