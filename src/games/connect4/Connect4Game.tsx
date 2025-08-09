@@ -64,7 +64,7 @@ export const Connect4Game = () => {
           <button
             onClick={startGame}
             disabled={!playerNames.player1.trim() || !playerNames.player2.trim()}
-            className="mt-6 px-6 sm:px-8 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="mt-6 px-6 sm:px-8 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg hover:from-green-700 hover:to-emerald-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-shadow-button"
           >
             START GAME
           </button>
@@ -88,7 +88,7 @@ export const Connect4Game = () => {
                 <div className="text-4xl sm:text-6xl animate-spin-slow mb-2">👑</div>
                 
                 {/* Winner Text */}
-                <div className="text-xl sm:text-3xl font-black text-white mb-2">
+                <div className="text-xl sm:text-3xl font-black text-white mb-2 text-shadow-game">
                   🎉 WINNER! 🎉
                 </div>
                 
@@ -100,7 +100,7 @@ export const Connect4Game = () => {
                 </div>
                 
                 {/* Celebration Message */}
-                <div className="text-base sm:text-lg font-semibold text-white mt-2">
+                <div className="text-base sm:text-lg font-semibold text-white mt-2 text-shadow-winner">
                   Congratulations! 🏆
                 </div>
               </div>
@@ -111,7 +111,7 @@ export const Connect4Game = () => {
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-4 shadow-lg border-2 border-blue-400">
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl mb-2">🤝</div>
-                <div className="text-xl sm:text-2xl font-bold text-white">
+                <div className="text-xl sm:text-2xl font-bold text-white text-shadow-winner">
                   It's a Draw!
                 </div>
                 <div className="text-xs sm:text-sm text-blue-100 mt-1">Great game, both players! 🎲</div>
@@ -136,9 +136,9 @@ export const Connect4Game = () => {
               aria-label={cell === 0 ? 'cell' : `cell p${cell}`}
               className={
                 cell === 1
-                  ? 'size-10 sm:size-16 rounded-full bg-red-500 border border-red-600 cursor-pointer hover:bg-red-600 transition-colors'
+                  ? 'size-10 sm:size-16 rounded-full border border-red-600 cursor-pointer hover:bg-red-600 transition-colors game-piece-red'
                   : cell === 2
-                  ? 'size-10 sm:size-16 rounded-full bg-yellow-400 border border-yellow-500 cursor-pointer hover:bg-yellow-500 transition-colors'
+                  ? 'size-10 sm:size-16 rounded-full border border-yellow-500 cursor-pointer hover:bg-yellow-500 transition-colors game-piece-yellow'
                   : 'size-10 sm:size-16 rounded-full bg-slate-300 border border-slate-400 cursor-pointer hover:bg-slate-200 transition-colors'
               }
               onClick={() => onClick(c)}
@@ -148,7 +148,7 @@ export const Connect4Game = () => {
       </div>
       <div className="mt-4 text-center">
         <button 
-          className="group relative px-4 sm:px-6 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg hover:from-purple-700 hover:to-pink-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20"
+          className="group relative px-4 sm:px-6 py-3 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-lg hover:from-purple-700 hover:to-pink-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200 border border-white/20 text-shadow-button"
           onClick={reset}
         >
           <span className="relative z-10">

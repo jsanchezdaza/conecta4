@@ -16,3 +16,24 @@ body {
 .animate-spin-slow {
   animation: spin-slow 3s linear infinite;
 }
+
+/* Custom classes for visual effects */
+.text-shadow-game {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.text-shadow-winner {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.text-shadow-button {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.game-piece-red {
+  background: radial-gradient(circle at 35% 25%, rgba(255,255,255,0.3), transparent 60%), #dc2626;
+}
+
+.game-piece-yellow {
+  background: radial-gradient(circle at 35% 25%, rgba(255,255,255,0.3), transparent 60%), #facc15;
+}
