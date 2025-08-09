@@ -1,4 +1,4 @@
-# Conecta4
+# Connect 4
 
 Connect 4 game built with TDD using Jest + React + Tailwind + Vite (pnpm).
 
