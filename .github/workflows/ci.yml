@@ -27,3 +27,5 @@ jobs:
         run: pnpm typecheck
       - name: Test
         run: pnpm test -- --ci
+      - name: Build
+        run: pnpm build
