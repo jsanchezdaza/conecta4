@@ -1,72 +1,93 @@
-# CLAUDE.md
+# Development Guidelines for Games Hub
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Package Manager
+
+**ALWAYS use pnpm** - Never use npm or yarn
+- Commands: `pnpm install`, `pnpm dev`, `pnpm build`
+- Lock file: `pnpm-lock.yaml`
+
+## Git Commit Guidelines
+
+**NO CO-AUTHOR references** - Never add "Co-authored-by: Claude" or similar
+- NO AI references in commit messages
+- Write commits as if made by a human developer
+- Use conventional commits: `feat:`, `fix:`, `chore:`, `docs:`
+
+### Examples:
+✅ `feat: add game library grid component`
+✅ `fix: resolve game search filtering issue`
+✅ `chore: update dependencies`
+❌ `feat: add game components (with Claude assistance)`
+❌ `Co-authored-by: Claude <claude@anthropic.com>`
+
+## Lean & XP Principles (MANDATORY)
+
+- **Simplest thing that works** - No over-engineering
+- **YAGNI (You Aren't Gonna Need It)** - Don't add features not explicitly requested
+- **Small iterations** - Implement minimal viable version first
+- **Refactor continuously** - Clean code as you go
+- **Test-driven when critical** - At least error handling tests
+- **User stories first** - Always think "As a gamer, I want to..."
+
+## Pre-Commit Refactor Check (MANDATORY)
+
+**BEFORE every commit, perform a refactor assessment:**
+
+1. **Code Quality Check**
+   - Are there any duplicated patterns in the new code?
+   - Can any new components/functions be simplified or extracted?
+   - Are there magic numbers or hardcoded strings that should be constants?
+   - Is the code following existing patterns and conventions?
+
+2. **Performance & Maintainability**
+   - Are there unnecessary re-renders or expensive operations?
+   - Can any complex logic be broken down into smaller functions?
+   - Are TypeScript types properly defined (no `any` usage)?
+   - Is error handling consistent across similar components?
+
+3. **Testing & Documentation**
+   - Do the changes maintain existing test coverage?
+   - Are new utilities/components covered by tests if critical?
+   - Is the code self-documenting or does it need comments?
+
+4. **Integration Review**
+   - Does the new code integrate well with existing components?
+   - Are there opportunities to reuse existing utilities/components?
+   - Does it follow the established file structure and naming conventions?
+
+**If any refactoring is needed, do it BEFORE the commit. Keep the commit focused and clean.**
+
+## Git Workflow (MANDATORY)
+
+**ALWAYS show files before committing:**
+
+1. **Show Git Status** - Run `git status` to display all modified/added/deleted files
+2. **Show File Changes** - Run `git diff` for staged changes and `git diff --staged` if needed
+3. **Review Files** - Present the list of files that will be included in the commit
+4. **Confirm Changes** - Let user review what will be committed before executing `git commit`
+
+This ensures transparency and allows review of exactly what changes are being committed to the repository.
 
 ## Development Commands
 
-- **Dev server**: `pnpm dev` (Vite development server)
-- **Build**: `pnpm build` (TypeScript compilation + Vite build)
-- **Preview**: `pnpm preview` (preview production build)
-- **Lint**: `pnpm lint` (ESLint)
-- **Typecheck**: `pnpm typecheck` (TypeScript type checking)
-- **Test all**: `pnpm test` (Jest test suite)
-- **Test watch**: `pnpm test:watch` or `pnpm test:ui`
-- **Test single file**: `pnpm test -- tests/<filename>.test.ts`
+- **Start development server**: `pnpm dev`
+- **Build for production**: `pnpm build`
+- **Lint code**: `pnpm lint`
+- **Run E2E tests**: `pnpm test:e2e`
+- **Preview production build**: `pnpm preview`
 
-Package manager: **pnpm** (not npm or yarn) - ALWAYS use pnpm for all package management commands
+## Pre-Commit Testing (MANDATORY)
 
-## Architecture Overview
+**BEFORE every commit, ALL tests must pass:**
 
-This is a Connect 4 game built with React, TypeScript, and Tailwind CSS following TDD principles.
+1. **Run lint**: `pnpm lint` - Must pass with zero errors
+2. **Run build**: `pnpm build` - Must complete successfully  
+3. **Run E2E tests**: `pnpm test:e2e` - All tests must pass
 
-### Core Structure
-- `src/board.ts`: Game logic core with immutable state management
-  - `GameState` type combines board, turn, winner, and draw status
-  - `initialState()` and `step()` functions manage state transitions
-  - Pure functions for game mechanics (dropPiece, checkWinner, etc.)
-- `src/ui/BoardView.tsx`: React component rendering the game board
-- `src/main.tsx`: Application entry point
+**NO exceptions.** If any command fails, fix the issues before committing. This ensures:
+- Code quality and consistency
+- No broken functionality reaches production
+- CI pipeline always succeeds
+- Deployment process runs smoothly
 
-### Key Patterns
-- **Immutable state**: All game state changes create new objects
-- **Single source of truth**: GameState contains all game information
-- **Functional approach**: Pure functions for game logic, React hooks for UI state
-- **Type safety**: Strict TypeScript with custom types (Cell, Board, GameState)
-
-### Testing Strategy
-- Comprehensive test coverage in `tests/` directory
-- Tests for game logic, UI interactions, accessibility, and edge cases
-- Jest + React Testing Library setup
-- TDD workflow: RED (failing test) → GREEN (implementation) → REFACTOR
-
-## Code Standards
-
-- **Imports**: ESM modules, use `@/*` paths for src imports
-- **Components**: Function components, PascalCase naming
-- **Styling**: Tailwind v4 with PostCSS, keep className attributes concise
-- **Accessibility**: Use role="grid" and role="gridcell", aria-label for screen readers
-- **Commits**: English messages, no direct push to main without review
-- **Commit guidelines**: NEVER include "Generated with Claude" or similar AI attribution in commit messages
-- **Co-authoring**: NEVER add Claude or AI tools as co-authors in commits
-
-## Deployment
-
-This project is deployed independently on Vercel as part of a microservices architecture:
-
-### Architecture
-- **games-hub**: Landing page at `games.javisan.dev` (handles routing and proxy)
-- **connecta4**: Independent deployment with internal URL for proxy
-- **quest-forge**: Independent deployment with internal URL for proxy
-
-### Vercel Configuration
-- Build command: `pnpm build`
-- Output directory: `dist`
-- Framework: Vite
-- SPA routing configured with rewrites to `/index.html`
-- Security headers included (X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
-
-### Deployment Process
-1. Push changes to main branch
-2. Vercel automatically builds and deploys
-3. The games-hub proxy will route `/connecta4` requests to this deployment
-4. Internal URL used by games-hub for seamless user experience
+The CI pipeline will fail if these standards aren't met locally first.
