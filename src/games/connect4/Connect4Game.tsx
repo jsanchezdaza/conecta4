@@ -30,43 +30,45 @@ export const Connect4Game = () => {
 
   if (gamePhase === 'setup') {
     return (
-      <div>
-        <h2>Choose Player Names</h2>
-        <div>
-          <label>Player 1 (Red)</label>
-          <input
-            type="text"
-            value={playerNames.player1}
-            onChange={(e) => setPlayerNames(prev => ({ ...prev, player1: e.target.value }))}
-            className="input"
-            placeholder="Enter player 1 name"
-            maxLength={20}
-          />
+      <div className="setup-container">
+        <div className="glass-card">
+          <h2 className="setup-title">Choose Player Names</h2>
+          <div className="player-input">
+            <label className="player-label red">Player 1 (Red)</label>
+            <input
+              type="text"
+              value={playerNames.player1}
+              onChange={(e) => setPlayerNames(prev => ({ ...prev, player1: e.target.value }))}
+              className="input"
+              placeholder="Enter player 1 name"
+              maxLength={20}
+            />
+          </div>
+          <div className="player-input">
+            <label className="player-label yellow">Player 2 (Yellow)</label>
+            <input
+              type="text"
+              value={playerNames.player2}
+              onChange={(e) => setPlayerNames(prev => ({ ...prev, player2: e.target.value }))}
+              className="input"
+              placeholder="Enter player 2 name"
+              maxLength={20}
+            />
+          </div>
+          <button
+            onClick={startGame}
+            disabled={!playerNames.player1.trim() || !playerNames.player2.trim()}
+            className="button"
+          >
+            START GAME
+          </button>
         </div>
-        <div>
-          <label>Player 2 (Yellow)</label>
-          <input
-            type="text"
-            value={playerNames.player2}
-            onChange={(e) => setPlayerNames(prev => ({ ...prev, player2: e.target.value }))}
-            className="input"
-            placeholder="Enter player 2 name"
-            maxLength={20}
-          />
-        </div>
-        <button
-          onClick={startGame}
-          disabled={!playerNames.player1.trim() || !playerNames.player2.trim()}
-          className="button"
-        >
-          START GAME
-        </button>
       </div>
     )
   }
 
   return (
-    <div>
+    <div className="game-container">
       <div className="status">
         {state.winner ? (
           <div className="winner">
@@ -78,7 +80,9 @@ export const Connect4Game = () => {
           </div>
         ) : (
           <div>
-            {getCurrentPlayerName()}'s Turn
+            <span className={state.turn === 1 ? 'turn-player1' : 'turn-player2'}>
+              {getCurrentPlayerName()}'s
+            </span> Turn
           </div>
         )}
       </div>
