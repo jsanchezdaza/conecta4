@@ -10,6 +10,10 @@ const routes: Route[] = [
   {
     path: '/connect4',
     component: React.lazy(() => import('./pages/Connect4Page').then(m => ({ default: m.Connect4Page })))
+  },
+  {
+    path: '/',
+    component: React.lazy(() => import('./pages/Connect4Page').then(m => ({ default: m.Connect4Page })))
   }
 ]
 
@@ -25,8 +29,8 @@ export const Router: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  // Default to /connect4 for root path
-  const path = currentPath === '/' ? '/connect4' : currentPath
+  // Use current path directly since we have routes for both / and /connect4
+  const path = currentPath
   
   const route = routes.find(r => r.path === path)
   
