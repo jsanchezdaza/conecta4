@@ -59,7 +59,10 @@ export const Router: React.FC = () => {
     <React.Suspense fallback={
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-white text-xl">Loading game...</div>
+          <div className="loading-container">
+            <span>Loading game...</span>
+            <div className="loading-piece"></div>
+          </div>
         </div>
       </Layout>
     }>

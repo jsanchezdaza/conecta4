@@ -58,9 +58,10 @@ export const Connect4Game = () => {
           <button
             onClick={startGame}
             disabled={!playerNames.player1.trim() || !playerNames.player2.trim()}
-            className="button"
+            className="button-chip"
           >
-            START GAME
+            <div>START</div>
+            <div>GAME</div>
           </button>
         </div>
       </div>
@@ -72,7 +73,7 @@ export const Connect4Game = () => {
       <div className="status">
         {state.winner ? (
           <div className="winner">
-            🎉 {state.winner === 1 ? playerNames.player1 : playerNames.player2} WINS! 🎉
+            {state.winner === 1 ? playerNames.player1 : playerNames.player2} WINS!
           </div>
         ) : state.draw ? (
           <div className="draw">
@@ -101,7 +102,8 @@ export const Connect4Game = () => {
       </div>
       
       <button className="button button-purple" onClick={reset}>
-        NEW GAME
+        <div>NEW</div>
+        <div>GAME</div>
       </button>
     </div>
   )
