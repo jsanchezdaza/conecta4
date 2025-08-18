@@ -4,6 +4,19 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    // Ensure neon colors are never purged
+    'bg-neon-blue', 'bg-neon-pink', 'bg-neon-green', 'bg-neon-purple', 'bg-neon-yellow', 'bg-neon-orange',
+    'text-neon-blue', 'text-neon-pink', 'text-neon-green', 'text-neon-purple', 'text-neon-yellow', 'text-neon-orange',
+    'border-neon-blue', 'border-neon-pink', 'border-neon-green', 'border-neon-purple', 'border-neon-yellow', 'border-neon-orange',
+    'shadow-neon-blue', 'shadow-neon-pink', 'shadow-neon-green', 'shadow-neon-purple', 'shadow-neon-yellow', 'shadow-neon-orange',
+    'hover:shadow-neon-blue', 'hover:shadow-neon-pink', 'hover:shadow-neon-green', 'hover:shadow-neon-purple', 'hover:shadow-neon-yellow', 'hover:shadow-neon-orange',
+    'hover:bg-neon-blue', 'hover:bg-neon-pink', 'hover:bg-neon-green', 'hover:bg-neon-purple', 'hover:bg-neon-yellow', 'hover:bg-neon-orange',
+    'focus:shadow-neon-blue', 'focus:shadow-neon-pink', 'focus:shadow-neon-green', 'focus:shadow-neon-purple', 'focus:shadow-neon-yellow', 'focus:shadow-neon-orange',
+    'focus:border-neon-blue', 'focus:border-neon-pink', 'focus:border-neon-green', 'focus:border-neon-purple', 'focus:border-neon-yellow', 'focus:border-neon-orange',
+    'animate-pulse-neon', 'animate-flicker',
+    'bg-black', 'min-h-screen', 'relative', 'overflow-hidden'
+  ],
   theme: {
     extend: {
       colors: {
