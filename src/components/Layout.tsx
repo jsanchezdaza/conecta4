@@ -10,8 +10,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Neon Grid Background */}
       <div className="neon-grid"></div>
       
-      {/* Main content - centered container */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 py-8">
+      {/* Main content - perfectly centered */}
+      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center justify-center">
         {children}
       </div>
     </div>
