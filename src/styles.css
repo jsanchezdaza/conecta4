@@ -12,23 +12,54 @@
   --neon-orange: #ff8c00;
 }
 
-/* Reset body and html */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Reset body and html - but preserve input functionality */
 html, body {
   margin: 0;
   padding: 0;
   background: black;
   font-family: system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 #root {
   min-height: 100vh;
   background: black;
+}
+
+/* Enhanced input styles for neon theme */
+input {
+  border: 2px solid transparent;
+  outline: none;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input::placeholder {
+  color: rgba(156, 163, 175, 1);
+  opacity: 1;
+}
+
+input:focus {
+  outline: none;
+  ring: 2px;
+  ring-offset: 2px;
+}
+
+/* Ensure text inputs work properly */
+input[type="text"] {
+  width: 100%;
+  max-width: 16rem;
 }
 
 /* Background and layout */
@@ -130,4 +161,24 @@ html, body {
 
 .animate-flicker {
   animation: flicker 3s linear infinite;
+}
+
+/* Ensure consistent text sizing */
+.text-4xl { font-size: 2.25rem !important; line-height: 2.5rem !important; }
+.text-5xl { font-size: 3rem !important; line-height: 1 !important; }
+.text-6xl { font-size: 3.75rem !important; line-height: 1 !important; }
+.text-xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
+.text-lg { font-size: 1.125rem !important; line-height: 1.75rem !important; }
+.text-base { font-size: 1rem !important; line-height: 1.5rem !important; }
+.text-sm { font-size: 0.875rem !important; line-height: 1.25rem !important; }
+.text-xs { font-size: 0.75rem !important; line-height: 1rem !important; }
+
+/* Responsive text sizing */
+@media (min-width: 640px) {
+  .sm\:text-6xl { font-size: 3.75rem !important; line-height: 1 !important; }
+  .sm\:text-7xl { font-size: 4.5rem !important; line-height: 1 !important; }
+  .sm\:text-2xl { font-size: 1.5rem !important; line-height: 2rem !important; }
+  .sm\:text-3xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
+  .sm\:text-4xl { font-size: 2.25rem !important; line-height: 2.5rem !important; }
+  .sm\:text-lg { font-size: 1.125rem !important; line-height: 1.75rem !important; }
 }
