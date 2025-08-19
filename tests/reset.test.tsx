@@ -12,8 +12,8 @@ describe('Reset', () => {
     fireEvent.click(cells[idx(0, 0)])
     fireEvent.click(cells[idx(0, 1)])
 
-    // Click NEW GAME button
-    fireEvent.click(screen.getByRole('button', { name: /new game/i }))
+    // Click RESET button
+    fireEvent.click(screen.getByRole('button', { name: /reset/i }))
 
     // Should be back in setup phase
     expect(screen.getByText('Choose Player Names')).toBeInTheDocument()

@@ -31,8 +31,7 @@ describe('Player Names', () => {
     fireEvent.click(cells[idx(0, 6)]) // Loser elsewhere
     fireEvent.click(cells[idx(0, 3)]) // Winner wins!
     
-    expect(screen.getByText('🎉 WINNER! 🎉')).toBeInTheDocument()
+    expect(screen.getByText('WINNER')).toBeInTheDocument()
     expect(screen.getByText('Winner')).toBeInTheDocument() // Player name
-    expect(screen.getByText('Congratulations! 🏆')).toBeInTheDocument()
   })
 })
