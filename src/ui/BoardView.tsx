@@ -1,5 +1,5 @@
 import React from 'react'
-import { initialState, step } from '@/board'
+import { initialState, step } from '../board'
 
 type GamePhase = 'setup' | 'playing'
 
